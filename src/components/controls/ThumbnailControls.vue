@@ -1,8 +1,29 @@
 <template>
-  <div class="controls grid grid-cols-4 gap-4 bg-[var(--controls-bg-color)] p-6 rounded-xl w-[1600px] box-border transition-colors duration-300">
+  <div
+    class="controls grid grid-cols-4 gap-4 bg-[var(--controls-bg-color)] p-6 rounded-xl w-[1600px] box-border transition-colors duration-300"
+  >
+    <div class="control-group flex flex-col col-span-4">
+      <label class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
+        {{ t('controls.lang') }}
+      </label>
+      <div class="flex gap-2">
+        <button
+          v-for="lang in Object.keys(messages)"
+          :key="lang"
+          @click="switchLang(lang)"
+          class="px-3 py-1 rounded-md border border-gray-400 hover:bg-gray-200"
+        >
+          {{ lang.toUpperCase() }}
+        </button>
+      </div>
+    </div>
+
     <div class="control-group flex flex-col">
-      <label for="handle-text" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        <i class="fas fa-at mr-2"></i>Handle Text
+      <label
+        for="handle-text"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        <i class="fas fa-at mr-2"></i>{{ t("controls.handleText") }}
       </label>
       <input
         id="handle-text"
@@ -10,13 +31,16 @@
         :value="configStore.handleText"
         @input="updateHandleText"
         class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
-        placeholder="Enter handle text"
+        :placeholder="t('controls.placeholders.handle')"
       />
     </div>
 
     <div class="control-group flex flex-col">
-      <label for="title-text" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        <i class="fas fa-heading mr-2"></i>Title Text
+      <label
+        for="title-text"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        <i class="fas fa-heading mr-2"></i>{{ t("controls.titleText") }}
       </label>
       <input
         id="title-text"
@@ -24,13 +48,17 @@
         :value="configStore.titleText"
         @input="updateTitleText"
         class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
-        placeholder="Enter title text"
+        :placeholder="t('controls.placeholders.title')"
       />
     </div>
 
     <div class="control-group flex flex-col">
-      <label for="right-header-text" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        <i class="fas fa-align-right mr-2"></i>Right Header Text
+      <label
+        for="right-header-text"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        <i class="fas fa-align-right mr-2"></i
+        >{{ t("controls.rightHeaderText") }}
       </label>
       <input
         id="right-header-text"
@@ -38,13 +66,16 @@
         :value="configStore.rightHeaderText"
         @input="updateRightHeaderText"
         class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
-        placeholder="Enter right header text"
+        :placeholder="t('controls.placeholders.rightHeader')"
       />
     </div>
 
     <div class="control-group flex flex-col">
-      <label for="footer-text" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        <i class="fas fa-shoe-prints mr-2"></i>Footer Text
+      <label
+        for="footer-text"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        <i class="fas fa-shoe-prints mr-2"></i>{{ t("controls.footerText") }}
       </label>
       <input
         id="footer-text"
@@ -52,13 +83,16 @@
         :value="configStore.footerText"
         @input="updateFooterText"
         class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
-        placeholder="Enter footer text"
+        :placeholder="t('controls.placeholders.footer')"
       />
     </div>
 
     <div class="control-group flex flex-col">
-      <label for="image-url" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        <i class="fas fa-image mr-2"></i>Image URL
+      <label
+        for="image-url"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        <i class="fas fa-image mr-2"></i>{{ t("controls.imageUrl") }}
       </label>
       <input
         id="image-url"
@@ -66,153 +100,168 @@
         :value="configStore.imageUrl"
         @input="updateImageUrl"
         class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
-        placeholder="Enter image URL"
+        :placeholder="t('controls.placeholders.image')"
       />
     </div>
+
     <ColorScheme
       :selected-theme="selectedTheme"
       :themes="themes"
       @update:selected-theme="updateSelectedTheme"
       @theme-change="updateTheme"
     />
+
     <div class="control-group flex flex-col">
-      <label for="grid-toggle" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">Show Grid</label>
-      <input 
-        type="checkbox" 
-        id="grid-toggle" 
+      <label
+        for="grid-toggle"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        {{ t("controls.showGrid") }}
+      </label>
+      <input
+        type="checkbox"
+        id="grid-toggle"
         :checked="showGrid"
         @change="updateShowGrid"
-        class="appearance-none relative w-6 h-6 bg-[var(--input-bg-color)] border border-[var(--input-border-color)] rounded-md cursor-pointer mt-2 inline-block align-middle checked:bg-[var(--button-primary-bg-color)] checked:border-[var(--button-primary-bg-color)] checked:after:content-[''] checked:after:absolute checked:after:top-1 checked:after:left-2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-solid checked:after:border-[var(--input-text-color)_0_3px_3px_0] checked:after:rotate-45"
-      >
+        class="custom-checkbox"
+      />
     </div>
+
     <div class="control-group flex flex-col">
-      <label for="disable-image-toggle" class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">Disable Image</label>
-      <input 
-        type="checkbox" 
-        id="disable-image-toggle" 
+      <label
+        for="disable-image-toggle"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        {{ t("controls.disableImage") }}
+      </label>
+      <input
+        type="checkbox"
+        id="disable-image-toggle"
         :checked="isTextOnly"
         @change="updateIsTextOnly"
-        class="appearance-none relative w-6 h-6 bg-[var(--input-bg-color)] border border-[var(--input-border-color)] rounded-md cursor-pointer mt-2 inline-block align-middle checked:bg-[var(--button-primary-bg-color)] checked:border-[var(--button-primary-bg-color)] checked:after:content-[''] checked:after:absolute checked:after:top-1 checked:after:left-2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-solid checked:after:border-[var(--input-text-color)_0_3px_3px_0] checked:after:rotate-45"
-      >
+        class="custom-checkbox"
+      />
     </div>
+
     <div class="control-group flex flex-col">
-      <label class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">Download</label>
+      <label
+        for="fit-image-toggle"
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+      >
+        {{ t("controls.showFullImage") }}
+      </label>
+      <input
+        type="checkbox"
+        id="fit-image-toggle"
+        :checked="configStore.fitImage === 'contain'"
+        @change="updateFitImage"
+        class="custom-checkbox"
+      />
+    </div>
+
+    <div class="control-group flex flex-col">
+      <label
+        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        >{{ t("controls.download") }}</label
+      >
       <DownloadButton />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import DownloadButton from './DownloadButton.vue'
-import ColorScheme from './ColorScheme.vue'
-import type { Theme } from '../../stores/savedThemes'
-import { useConfigStore } from '../../stores/configStore'
+import { useI18n } from "vue-i18n";
+import DownloadButton from "./DownloadButton.vue";
+import ColorScheme from "./ColorScheme.vue";
+import type { Theme } from "../../stores/savedThemes";
+import { useConfigStore } from "../../stores/configStore";
 
 interface Props {
-  selectedTheme: string
-  showGrid: boolean
-  isTextOnly: boolean
-  themes: Record<string, Theme>
+  selectedTheme: string;
+  showGrid: boolean;
+  isTextOnly: boolean;
+  themes: Record<string, Theme>;
 }
 
 interface Emits {
-  (e: 'update:selectedTheme', value: string): void
-  (e: 'update:showGrid', value: boolean): void
-  (e: 'update:isTextOnly', value: boolean): void
-  (e: 'themeChange', value: string): void
+  (e: "update:selectedTheme", value: string): void;
+  (e: "update:showGrid", value: boolean): void;
+  (e: "update:isTextOnly", value: boolean): void;
+  (e: "themeChange", value: string): void;
 }
 
-defineProps<Props>()
-const emit = defineEmits<Emits>()
+defineProps<Props>();
+const emit = defineEmits<Emits>();
 
-const {
-  configStore
-} = useConfigStore()
+const { configStore } = useConfigStore();
+const { t, locale, messages } = useI18n();
 
-function updateHandleText(event: Event) {
-  const target = event.target as HTMLInputElement
-  configStore.handleText = target.value
+function updateHandleText(e: Event) {
+  configStore.handleText = (e.target as HTMLInputElement).value;
 }
-
-function updateTitleText(event: Event) {
-  const target = event.target as HTMLInputElement
-  configStore.titleText = target.value
+function updateTitleText(e: Event) {
+  configStore.titleText = (e.target as HTMLInputElement).value;
 }
-
-function updateRightHeaderText(event: Event) {
-  const target = event.target as HTMLInputElement
-  configStore.rightHeaderText = target.value
+function updateRightHeaderText(e: Event) {
+  configStore.rightHeaderText = (e.target as HTMLInputElement).value;
 }
-
-function updateFooterText(event: Event) {
-  const target = event.target as HTMLInputElement
-  configStore.footerText = target.value
+function updateFooterText(e: Event) {
+  configStore.footerText = (e.target as HTMLInputElement).value;
 }
-
-function updateImageUrl(event: Event) {
-  const target = event.target as HTMLInputElement
-  configStore.imageUrl = target.value
+function updateImageUrl(e: Event) {
+  configStore.imageUrl = (e.target as HTMLInputElement).value;
+}
+function updateFitImage(e: Event) {
+  configStore.fitImage = (e.target as HTMLInputElement).checked
+    ? "contain"
+    : "cover";
 }
 
 function updateSelectedTheme(themeKey: string) {
-  emit('update:selectedTheme', themeKey)
+  emit("update:selectedTheme", themeKey);
 }
-
 function updateTheme(themeKey: string) {
-  emit('themeChange', themeKey)
+  emit("themeChange", themeKey);
+}
+function updateShowGrid(e: Event) {
+  emit("update:showGrid", (e.target as HTMLInputElement).checked);
+}
+function updateIsTextOnly(e: Event) {
+  emit("update:isTextOnly", (e.target as HTMLInputElement).checked);
 }
 
-function updateShowGrid(event: Event) {
-  const target = event.target as HTMLInputElement
-  emit('update:showGrid', target.checked)
-}
-
-function updateIsTextOnly(event: Event) {
-  const target = event.target as HTMLInputElement
-  emit('update:isTextOnly', target.checked)
+function switchLang(lang: string) {
+  locale.value = lang;
 }
 </script>
 
 <style scoped>
-.controls select::-webkit-scrollbar {
-  width: 8px;
-}
-
-.controls select::-webkit-scrollbar-track {
+.custom-checkbox {
+  appearance: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-top: 0.5rem;
   background: var(--input-bg-color);
-  border-radius: 4px;
-}
-
-.controls select::-webkit-scrollbar-thumb {
-  background: var(--button-primary-bg-color);
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.controls select::-webkit-scrollbar-thumb:hover {
-  background: var(--button-primary-hover-bg-color);
-}
-
-.controls select {
-  scrollbar-width: thin;
-  scrollbar-color: var(--button-primary-bg-color) var(--input-bg-color);
-}
-
-.controls select option {
-  background-color: var(--input-bg-color);
-  color: var(--input-text-color);
-  padding: 8px 12px;
-  border: none;
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
-.controls select option:hover {
-  background-color: var(--button-primary-bg-color);
+.custom-checkbox:checked {
+  background: var(--button-primary-bg-color);
+  border-color: var(--button-primary-bg-color);
 }
 
-.controls select option:checked {
-  background-color: var(--button-primary-hover-bg-color);
-  font-weight: 600;
+.custom-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--input-text-color);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 </style>

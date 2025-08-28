@@ -19,7 +19,7 @@ export interface Theme {
 }
 
 export const themes: Record<string, Theme> = {
-  "default": {
+  default: {
     name: "Default",
     category: "Dark",
     colors: {
@@ -138,7 +138,7 @@ export const themes: Record<string, Theme> = {
       "--thumbnail-secondary-text-color": "#a0aec0",
     },
   },
-  "charcoal": {
+  charcoal: {
     name: "Charcoal",
     category: "Dark",
     colors: {
