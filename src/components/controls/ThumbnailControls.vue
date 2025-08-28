@@ -4,7 +4,7 @@
   >
     <div class="control-group flex flex-col col-span-4">
       <label class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
-        {{ t('controls.lang') }}
+        {{ t("controls.lang") }}
       </label>
       <div class="flex gap-2">
         <button
