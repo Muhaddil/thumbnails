@@ -1,10 +1,9 @@
-import { reactive, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { reactive, computed } from 'vue'
+import { useI18n } from "vue-i18n"
 
-export function useConfigStore() {
-  const { t } = useI18n();
-
-  const configStore = reactive({
+const { t } = useI18n();
+  
+export const configStore = reactive({
     handleText: computed(() => t("controls.handleText")),
     titleText: computed(() => t("controls.titleText")),
     rightHeaderText: computed(() => t("controls.rightHeaderText")),
@@ -13,5 +12,8 @@ export function useConfigStore() {
     fitImage: "cover",
   });
 
-  return { configStore };
+export function useConfigStore() {
+  return {
+    configStore
+  }
 }
