@@ -43,13 +43,13 @@
           class="ui-card w-[95%] flex-grow bg-transparent border-none rounded-2xl flex justify-center items-center box-border overflow-hidden"
         >
           <div
-            v-if="configStore.imageUrl && !isTextOnly"
+            v-if="configStore.imageUrl"
             class="w-full h-full bg-center bg-no-repeat"
             :style="{
               backgroundImage: `url(${configStore.imageUrl})`,
               backgroundSize: configStore.fitImage,
             }"
-          />
+          ></div>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useConfigStore } from "../stores/configStore";
 
 interface Props {
@@ -109,4 +109,20 @@ defineProps<Props>();
 const { configStore } = useConfigStore();
 
 const thumbnailRef = ref<HTMLElement>();
+
+watch(
+  () => configStore.imageUrl,
+  (newUrl, oldUrl) => {
+    console.log("Imagen cambiada:", oldUrl, "➡️", newUrl);
+
+    if (newUrl) {
+      thumbnailRef.value?.style.setProperty(
+        "background-image",
+        `url(${newUrl})`,
+      );
+    } else {
+      thumbnailRef.value?.style.removeProperty("background-image");
+    }
+  },
+);
 </script>
