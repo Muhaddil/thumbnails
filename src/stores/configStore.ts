@@ -1,7 +1,8 @@
+// configStore.ts
 import { reactive, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { i18n } from "./i18n";
 
-const { t } = useI18n();
+const { t } = i18n.global;
 
 export const configStore = reactive({
   handleText: computed(() => t("controls.handleText")),
