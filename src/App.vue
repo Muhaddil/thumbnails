@@ -21,7 +21,7 @@ onMounted(() => {
 <template>
   <div
     id="app"
-    class="min-h-screen bg-[var(--page-bg-color)] text-[var(--input-text-color)] font-['Manrope'] flex flex-col items-center justify-center p-8 gap-8 transition-colors duration-300"
+    class="min-h-screen bg-(--page-bg-color) text-(--input-text-color) font-['Manrope'] flex flex-col items-center justify-center p-8 gap-8 transition-colors duration-300"
   >
     <ThumbnailPreview
       :is-text-only="isTextOnly"

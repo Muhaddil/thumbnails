@@ -2,7 +2,7 @@
   <button
     @click="downloadThumbnail"
     :disabled="isDownloading"
-    class="w-full p-3 rounded-md bg-[var(--button-primary-bg-color)] hover:bg-[var(--button-primary-hover-bg-color)] text-[var(--input-text-color)] font-['Manrope'] font-semibold transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+    class="w-full p-3 rounded-md bg-(--button-primary-bg-color) hover:bg-(--button-primary-hover-bg-color) text-(--input-text-color) font-['Manrope'] font-semibold transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
   >
     <i class="fas fa-download"></i>
     {{ isDownloading ? t("controls.downloading") : t("controls.download") }}

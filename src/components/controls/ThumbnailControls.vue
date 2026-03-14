@@ -1,9 +1,9 @@
 <template>
   <div
-    class="controls grid grid-cols-4 gap-4 bg-[var(--controls-bg-color)] p-6 rounded-xl w-[1600px] box-border transition-colors duration-300"
+    class="controls grid grid-cols-4 gap-4 bg-(--controls-bg-color) p-6 rounded-xl w-[1600px] box-border transition-colors duration-300"
   >
     <div class="control-group flex flex-col col-span-4">
-      <label class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]">
+      <label class="mb-2 text-sm text-(--thumbnail-secondary-text-color)">
         {{ t("controls.lang") }}
       </label>
       <div class="flex gap-2">
@@ -21,7 +21,7 @@
     <div class="control-group flex flex-col">
       <label
         for="handle-text"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         <i class="fas fa-at mr-2"></i>{{ t("controls.handleText") }}
       </label>
@@ -30,7 +30,7 @@
         type="text"
         :value="configStore.handleText"
         @input="updateHandleText"
-        class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
+        class="w-full p-2 rounded-md border border-(--input-border-color) bg-(--input-bg-color) text-(--input-text-color) font-['Manrope']"
         :placeholder="t('controls.placeholders.handle')"
       />
     </div>
@@ -38,7 +38,7 @@
     <div class="control-group flex flex-col">
       <label
         for="title-text"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         <i class="fas fa-heading mr-2"></i>{{ t("controls.titleText") }}
       </label>
@@ -47,7 +47,7 @@
         type="text"
         :value="configStore.titleText"
         @input="updateTitleText"
-        class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
+        class="w-full p-2 rounded-md border border-(--input-border-color) bg-(--input-bg-color) text-(--input-text-color) font-['Manrope']"
         :placeholder="t('controls.placeholders.title')"
       />
     </div>
@@ -55,7 +55,7 @@
     <div class="control-group flex flex-col">
       <label
         for="right-header-text"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         <i class="fas fa-align-right mr-2"></i
         >{{ t("controls.rightHeaderText") }}
@@ -65,7 +65,7 @@
         type="text"
         :value="configStore.rightHeaderText"
         @input="updateRightHeaderText"
-        class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
+        class="w-full p-2 rounded-md border border-(--input-border-color) bg-(--input-bg-color) text-(--input-text-color) font-['Manrope']"
         :placeholder="t('controls.placeholders.rightHeader')"
       />
     </div>
@@ -73,7 +73,7 @@
     <div class="control-group flex flex-col">
       <label
         for="footer-text"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         <i class="fas fa-shoe-prints mr-2"></i>{{ t("controls.footerText") }}
       </label>
@@ -82,7 +82,7 @@
         type="text"
         :value="configStore.footerText"
         @input="updateFooterText"
-        class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
+        class="w-full p-2 rounded-md border border-(--input-border-color) bg-(--input-bg-color) text-(--input-text-color) font-['Manrope']"
         :placeholder="t('controls.placeholders.footer')"
       />
     </div>
@@ -90,7 +90,7 @@
     <div class="control-group flex flex-col">
       <label
         for="image-url"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         <i class="fas fa-image mr-2"></i>{{ t("controls.imageUrl") }}
       </label>
@@ -99,7 +99,7 @@
         type="text"
         :value="configStore.imageUrl"
         @input="updateImageUrl"
-        class="w-full p-2 rounded-md border border-[var(--input-border-color)] bg-[var(--input-bg-color)] text-[var(--input-text-color)] font-['Manrope']"
+        class="w-full p-2 rounded-md border border-(--input-border-color) bg-(--input-bg-color) text-(--input-text-color) font-['Manrope']"
         :placeholder="t('controls.placeholders.image')"
       />
     </div>
@@ -114,7 +114,7 @@
     <div class="control-group flex flex-col">
       <label
         for="grid-toggle"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         {{ t("controls.showGrid") }}
       </label>
@@ -130,7 +130,7 @@
     <div class="control-group flex flex-col">
       <label
         for="disable-image-toggle"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         {{ t("controls.disableImage") }}
       </label>
@@ -146,7 +146,7 @@
     <div class="control-group flex flex-col">
       <label
         for="fit-image-toggle"
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
       >
         {{ t("controls.showFullImage") }}
       </label>
@@ -161,7 +161,7 @@
 
     <div class="control-group flex flex-col">
       <label
-        class="mb-2 text-sm text-[var(--thumbnail-secondary-text-color)]"
+        class="mb-2 text-sm text-(--thumbnail-secondary-text-color)"
         >{{ t("controls.download") }}</label
       >
       <DownloadButton />

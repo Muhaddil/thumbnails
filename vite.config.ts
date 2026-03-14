@@ -6,7 +6,6 @@ export default defineConfig({
   base: '/thumbnails/',
   plugins: [vue()],
   build: {
-    outDir: '../build',
     emptyOutDir: true
   }
 });
